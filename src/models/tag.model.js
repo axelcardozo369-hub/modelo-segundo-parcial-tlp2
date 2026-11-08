@@ -1,6 +1,5 @@
 // * ARCHIVO A COMPLETAR
 import { model, Schema } from "mongoose";
-import { RecipeModel } from "./recipe.model";
 
 const tagSchema = new Schema(
   {
@@ -14,7 +13,7 @@ const tagSchema = new Schema(
     },
     // TODO: 2. description: string, opcional, máximo 200 caracteres.
     description: {
-      type: string,
+      type: String,
       maxlength: 200,
     },
   },
