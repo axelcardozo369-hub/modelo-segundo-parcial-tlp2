@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "a60d46da-21f0-43d1-9bce-a38b022cea72",
+		"name": "Práctica Recetario (Mongoose)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/auth/register",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ana\",\n    \"email\": \"ana@mail.com\",\n    \"password\": \"Password1\",\n    \"profile\": {\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Paz\",\n        \"country\": \"Argentina\",\n        \"phone\": \"3704123456\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/auth/login",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"ana@mail.com\",\n    \"password\": \"Password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin (seed)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/auth/login",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@recetario.com\",\n    \"password\": \"Admin1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:3005/api/auth/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver mi perfil",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/auth/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar mi perfil",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/auth/profile",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Anita\",\n    \"country\": \"Uruguay\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users (admin)",
+			"item": [
+				{
+					"name": "Ver todos los users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver un user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/users/ID_DE_MONGO"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar un user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/users/ID_DE_MONGO",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"anita\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3005/api/users/ID_DE_MONGO"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Crear tag (admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/tags",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Vegano\",\n    \"description\": \"Sin ingredientes de origen animal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver todas las tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/tags"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver una tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/tags/ID_DE_MONGO"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar tag (admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/tags/ID_DE_MONGO",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Vegano\",\n    \"description\": \"Recetas veganas\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar tag (admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3005/api/tags/ID_DE_MONGO"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Crear receta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/recipes",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Pan casero\",\n    \"description\": \"Un pan casero muy simple, ideal para el desayuno\",\n    \"prepTime\": 90,\n    \"servings\": 6,\n    \"difficulty\": \"easy\",\n    \"status\": \"published\",\n    \"ingredients\": [\n        {\n            \"name\": \"Harina\",\n            \"quantity\": 500,\n            \"unit\": \"g\"\n        },\n        {\n            \"name\": \"Agua\",\n            \"quantity\": 0.3,\n            \"unit\": \"l\"\n        }\n    ],\n    \"nutrition\": {\n        \"calories\": 250,\n        \"protein\": 8,\n        \"carbs\": 50\n    },\n    \"tags\": [\n        \"ID_DE_MONGO\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver recetas publicadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/recipes"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver mis recetas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/recipes/my"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver una receta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/recipes/ID_DE_MONGO"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar receta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "http://localhost:3005/api/recipes/ID_DE_MONGO",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"servings\": 8,\n    \"status\": \"published\",\n    \"ingredients\": [\n        {\n            \"name\": \"Sal\",\n            \"quantity\": 1,\n            \"unit\": \"tsp\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar receta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3005/api/recipes/ID_DE_MONGO"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
