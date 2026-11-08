@@ -9,7 +9,9 @@ export const getAllUsers = async (_req, res) => {
     const users = await UserModel.find({ deletedAt: null })
       .select("-password")
       .populate("recipes");
-    return res.status(200).json({ message: "estos son todos los usuarios", data: users });
+    return res
+      .status(200)
+      .json({ message: "estos son todos los usuarios", data: users });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "error interno del servidor" });
@@ -18,7 +20,10 @@ export const getAllUsers = async (_req, res) => {
 
 export const getIdUser = async (req, res) => {
   try {
-    const user = await UserModel.findOne({ _id: req.params.id, deletedAt: null })
+    const user = await UserModel.findOne({
+      _id: req.params.id,
+      deletedAt: null,
+    })
       .select("-password")
       .populate("recipes");
     return res.status(200).json({ message: "usuario encontrado", data: user });
@@ -36,7 +41,9 @@ export const updateUser = async (req, res) => {
     await UserModel.findByIdAndUpdate(req.params.id, data);
     // se vuelve a leer para devolver el user ya actualizado y sin la password
     const user = await UserModel.findById(req.params.id).select("-password");
-    return res.status(200).json({ message: "usuario actualizado con exito", data: user });
+    return res
+      .status(200)
+      .json({ message: "usuario actualizado con exito", data: user });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "error interno del servidor" });
@@ -46,8 +53,12 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     // TODO: 1. Eliminación lógica: en lugar de borrar el user, ponerle la fecha actual en deletedAt.
+    const { id } = req.params;
+    await UserModel.findByIdAndUpdate(id, { deletedAt: new Date() });
     // TODO: 2. Eliminación en cascada: borrar todas las recipes cuyo author sea ese user.
+    await RecipeModel.deleteMany({ author: id });
     // TODO: 3. Responder con código 200 y un mensaje de éxito.
+    return res.status(200).json({ message: "user eliminado con exito" });
     // ? La validación de la ruta ya comprobó que el id es válido y que el user existe.
   } catch (error) {
     console.log(error);
